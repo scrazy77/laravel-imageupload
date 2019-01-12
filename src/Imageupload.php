@@ -249,7 +249,7 @@ class Imageupload
                 $this->results['exif'] = $image->exif();
             }
 
-            $image->save($targetFilepath, $this->quality);
+            $image->orientate()->save($targetFilepath, $this->quality);
 
             // Save to s3
             if(true === $this->s3_enabled) {
@@ -318,7 +318,7 @@ class Imageupload
                 });
             }
 
-            $image->save($targetFilepath, $this->quality);
+            $image->orientate()->save($targetFilepath, $this->quality);
 
             $return = [
                 'path' => dirname($targetFilepath),
